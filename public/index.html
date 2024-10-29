@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像選択</title>
+</head>
+<body>
+<h1>画像を選択してください</h1>
+<button onclick="showImage('red.png')">レッド</button>
+<button onclick="showImage('yellow.png')">イエロー</button>
+<button onclick="showImage('blue.png')">ブルー</button>
+<button onclick="showImage('orange_ball.png')">オレンジボール</button>
+<button onclick="showImage('black.png')">ブラック</button>
+<button onclick="showImage('checker.png')">チェッカー</button>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    function showImage(imageName) {
+        // サーバーに画像名を送信
+        socket.emit('showImage', imageName);
+    }
+</script>
+</body>
+</html>

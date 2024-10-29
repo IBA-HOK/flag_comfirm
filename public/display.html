@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サーバー側で画像を表示</title>
+</head>
+<body>
+<h1>サーバーで選択された画像を表示</h1>
+<div id="imageContainer">ここに画像が表示されます</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    socket.on('displayImage', (imageName) => {
+        const imageContainer = document.getElementById('imageContainer');
+        imageContainer.innerHTML = `<img src="/images/${imageName}" alt="Selected Image" style="max-width: 80%; max-height: 80%;">`;
+    });
+</script>
+</body>
+</html>
